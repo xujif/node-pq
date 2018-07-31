@@ -17,5 +17,9 @@ for (let i = 0; i < 20; i++) {
         }
         await sleep(Math.random() * 3000)
         return i * 2
+    }).then(v => {
+        // then
+    }).catch(e => {
+        // on rejest
     })
 }
