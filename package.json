@@ -1,0 +1,36 @@
+{
+  "name": "node-pq",
+  "version": "1.0.0",
+  "homepage": "https://github.com/xujif/ts-json-rpc",
+  "author": "i@xujif.com",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "description": "A promise queue, with concurrency limiting, written by typescript",
+  "keywords": [
+    "concurrency",
+    "promise",
+    "queue",
+    "typescript"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "prepack": "npm run tslint && npm run compile",
+    "compile": "tsc",
+    "tslint": "tslint --project .",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "debug": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/node": "^8.10.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.7.2"
+  }
+}
