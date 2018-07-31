@@ -107,6 +107,7 @@ export class PromiseQueue {
     protected async _run () {
         const item = this.queue.shift()
         if (!item) {
+            this._activeWorkers--;
             return
         }
         if (this.queue.length === 0) {
