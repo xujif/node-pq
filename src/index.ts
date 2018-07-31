@@ -105,23 +105,17 @@ export class PromiseQueue {
         setImmediate(this._run.bind(this))
     }
     protected async _run () {
-        const item = this.queue.shift()
-        if (!item) {
-            this._activeWorkers--;
-            return
-        }
-        if (this.queue.length === 0) {
-            this.evt.emit('empty')
-        }
-        try {
-            const v = await item.handle()
-            this.evt.emit(`resolve::${item.id}`, v)
-        } catch (e) {
-            this.evt.emit(`reject::${item.id}`, e)
-        }
-        if (this._isRunning && this.queue.length > 0) {
-            setImmediate(this._run.bind(this))
-            return
+        while (this._isRunning && this.queue.length) {
+            const item = this.queue.shift()!
+            if (this.queue.length === 0) {
+                this.evt.emit('empty')
+            }
+            try {
+                const v = await item.handle()
+                this.evt.emit(`resolve::${item.id}`, v)
+            } catch (e) {
+                this.evt.emit(`reject::${item.id}`, e)
+            }
         }
         this._activeWorkers--;
         if (this._isRunning && this._activeWorkers === 0) {
