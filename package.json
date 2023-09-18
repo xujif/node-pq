@@ -1,7 +1,7 @@
 {
   "name": "node-pq",
-  "version": "1.0.1",
-  "homepage": "https://github.com/xujif/ts-json-rpc",
+  "version": "1.0.2",
+  "homepage": "https://github.com/xujif/node-pq",
   "author": "i@xujif.com",
   "engines": {
     "node": ">=8.0.0"
